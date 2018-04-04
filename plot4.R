@@ -23,6 +23,7 @@ pwr2 <- subset(pwr, datetime >= as.POSIXct('2007-02-01 00:00:00') &
                    datetime < as.POSIXct('2007-02-03 00:00:00'))
 
 # Plot 4
+png(here("jhu-exploratory_data_analysis","plot4.png"), 480,480)
 par(mfrow = c(2,2), mar=c(4,4,2,1), oma=c(0,0,2,0))
 # 4.1
 with(pwr2, plot(datetime, Global_active_power, type  = "l", 
@@ -43,6 +44,4 @@ legend("topright", lty = 1, col = c("black", "red", "blue"), cex = 0.75,
 with(pwr2, plot(datetime, Global_reactive_power, type  = "l", 
                 xlab = "datetime"))
 
-dev.copy(png, file = here("jhu-exploratory_data_analysis","plot4.png"),
-         width = 480, height = 480);
 dev.off()

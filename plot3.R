@@ -23,15 +23,16 @@ pwr2 <- subset(pwr, datetime >= as.POSIXct('2007-02-01 00:00:00') &
                    datetime < as.POSIXct('2007-02-03 00:00:00'))
 
 # Plot 3
+# To fit the legend, create the png first
+png(here("jhu-exploratory_data_analysis","plot3.png"), 480,480)
 with(pwr2, {
     plot(datetime, Sub_metering_1, type = "l", 
          ylab = "Energy sub mertering")
     lines(datetime, Sub_metering_2, col = "red")
     lines(datetime, Sub_metering_3, col = "blue")
 })
-legend("topright", lty = 1, col = c("black", "red", "blue"), cex = 0.75,
+legend("topright", lty = 1, col = c("black", "red", "blue"),
+       cex = 1,  lwd = 2,
        legend =c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
-dev.copy(png, file = here("jhu-exploratory_data_analysis","plot3.png"),
-         width = 480, height = 480);
 dev.off()
